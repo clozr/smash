@@ -1,0 +1,12 @@
+.svn
+*.swp
+*.swo
+*.pyc
+*.tgz
+*.min.js
+_[^_]*
+iaas/ssl
+iaas/backup
+iaas/data
+iaas/keys
+media/css/*.css
