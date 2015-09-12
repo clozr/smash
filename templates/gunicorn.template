@@ -1,0 +1,18 @@
+description "{{service.description}}"
+
+start on (local-filesystems and net-device-up IFACE=eth0)
+stop on runlevel [!12345]
+
+# If the process quits unexpectadly trigger a respawn
+respawn
+
+setuid {{user}}
+setgid {{user}}
+chdir {{app_root}}/{{app_name}}
+
+exec gunicorn \
+    --name={{app_name}}\
+    --pythonpath={{app_root}}/{{app_name}} \
+    --bind={{host}}:{{port}} \
+    --config gunicorn.py \
+    wsgi:application

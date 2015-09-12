@@ -1,0 +1,15 @@
+conn = new Mongo();
+db = conn.getDB("admin");
+
+db.createUser({user: "{{db_admin}}", pwd: "{{admin_passwd}}", roles: [ "userAdminAnyDatabase", "clusterAdmin" ]});
+db.auth("{{db_admin}}","{{admin_passwd}}");
+
+db.createUser({user: "{{app_admin_user}}", pwd: "{{app_admin_passwd}}", roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "clusterAdmin" ]});
+
+{% for db_name in dbs %}
+  db = conn.getDB("{{db_name}}");
+  db.createUser({user: "{{db_user}}", pwd: "{{db_passwd}}", roles: [ "readWrite", "dbAdmin" ]});
+{%- endfor -%}
+
+db = conn.getDB("{{testdb}}");
+db.createUser({user: "{{testdb_user}}", pwd: "{{testdb_passwd}}", roles: [ "readWrite", "dbAdmin" ]});

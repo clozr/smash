@@ -1,0 +1,15 @@
+#!/usr/bin/python
+import os
+import sys
+
+app_paths = ['{{proj_root}}', '{{app_root}}']
+
+for app_path in app_paths:
+  if app_path not in sys.path:
+     sys.path.append(app_path)
+
+os.environ['PYTHON_EGG_CACHE'] = '{{proj_root}}/.python-egg'
+os.environ['DJANGO_SETTINGS_MODULE'] = '{{app}}.production'
+
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()

@@ -1,0 +1,6 @@
+{%- for h in ssh -%}
+Host {{h.host}}
+  IdentityFile {{ssh_dir}}/{{h.key}}.key
+  User {{h.user}}
+
+{% endfor %}
