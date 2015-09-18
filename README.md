@@ -27,6 +27,13 @@ To use *smash* you need python. In  addition you need the following python libra
 ## syntax
  Every shell commmand used in *smash recipes* have a prefix. This section describes the various prefix used to modulate the shell command.
  
+### prefix *@d*
+This prefix defines a variable in smash. The variable is available for local as well remote commands.
+
+```
+@d domain www.clozr.com
+```
+ 
 ### prefix *!*
  This prefix instructs to run a shell command `<cmd>` on local host. 
  ```bash
@@ -34,6 +41,7 @@ To use *smash* you need python. In  addition you need the following python libra
  ```
 If you prefix all command wih !, resulting script will be a valid shell script. But the real power of this prefix is that it accepts templated command. Following example illustrates this by creating a certificate signing request:
 ```
+@d domain www.clozr.com
 ! mkdir -p ssl/{{domain}}
 ! cd ssl/{{domain}} && openssl req -newkey rsa:2048 -nodes -keyout {{domain}}.key -out {{domain}}.csr -subj "/C={{country}}/ST={{state}}/L={{city}}/O={{company}}/OU=IT/CN={{domain}}"
 ```
