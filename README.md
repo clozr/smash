@@ -41,9 +41,18 @@ This prefix defines a variable in smash. The variable is available for local as 
  ```
 If you prefix all command wih !, resulting script will be a valid shell script. But the real power of this prefix is that it accepts templated command. Following example illustrates this by creating a certificate signing request:
 ```
-@d domain www.clozr.com
 ! mkdir -p ssl/{{domain}}
 ! cd ssl/{{domain}} && openssl req -newkey rsa:2048 -nodes -keyout {{domain}}.key -out {{domain}}.csr -subj "/C={{country}}/ST={{state}}/L={{city}}/O={{company}}/OU=IT/CN={{domain}}"
+```
+You can use this recipe with following configuration
+```python
+ssl_cert = {
+'country': 'US',
+'state' : 'CA',
+'city': 'Mountain View',
+'company': 'Clozr Inc',
+'domain' : 'www.clozr.com',
+}
 ```
 
 ## prefix *-*
