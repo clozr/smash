@@ -10,7 +10,7 @@ To use *smash* you need python. In  addition you need the following python libra
  2) jinja2
  3) optparse
  
- ## usage
+## usage
  Currently, you need three folders to organize your files. This will change in future to allow more flexibility.
  1) config - Here you will have the global configuration which can be used in the scripts
  2) templates - You can keep the template files here. e.g. Templated version of mysql.conf or mongodb.conf or similar.
@@ -19,19 +19,20 @@ To use *smash* you need python. In  addition you need the following python libra
  Use the following syntax to run your smash scripts.
  python smash.py -c <config-file> <recipe-name>
  
- ## syntax
+## syntax
  Every shell commmand used in *smash recipes* have a prefix. This section describes the various prefix used to modulate the shell command.
  
- ### *!* prefix
+### prefix *!*
  This prefix instructs to run a shell command `<cmd>` on local host:
   ! <cmd>
  
- ### *-* prefix
+## prefix *-*
  This prefix instructs to run a shell command `<cmd>` on all specified remote hosts:
-   - <cmd>
-
- ### *+* prefix
+ ```
+ - <cmd>
+```
+## prefix *+* 
  This prefix instructs to run a shell command `<cmd>` on all specified remote hosts in sudo mode:
-  + <cmd> 
-
+```+ <cmd> 
+```
 
