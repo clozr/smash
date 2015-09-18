@@ -17,22 +17,27 @@ To use *smash* you need python. In  addition you need the following python libra
  3) recipes - you keep your shell command recipes here
  
  Use the following syntax to run your smash scripts.
- python smash.py -c <config-file> <recipe-name>
+ ```bash
+ python smash.py -c <config-file> ubuntu.install_pkgs -H web1 web2 web3      # runs the recipe install_pkgs in recipe/ubuntu.sh with remote hosts `web1`, `web2`, `web3`
+ ```
+ 
  
 ## syntax
  Every shell commmand used in *smash recipes* have a prefix. This section describes the various prefix used to modulate the shell command.
  
 ### prefix *!*
  This prefix instructs to run a shell command `<cmd>` on local host:
-  ! <cmd>
- 
+ ```bash
+ ! <cmd>
+ ```
 ## prefix *-*
  This prefix instructs to run a shell command `<cmd>` on all specified remote hosts:
- ```
+ ```bash
  - <cmd>
 ```
 ## prefix *+* 
  This prefix instructs to run a shell command `<cmd>` on all specified remote hosts in sudo mode:
-```+ <cmd> 
+```bash
++ <cmd>  # run the command on host web1, web2, web3 in sudo mode
 ```
 
