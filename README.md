@@ -18,7 +18,9 @@ To use *smash* you need python. In  addition you need the following python libra
  
  Use the following syntax to run your smash scripts.
  ```bash
- python smash.py -c <config-file> ubuntu.install_pkgs -H web1 web2 web3      # runs the recipe install_pkgs in recipe/ubuntu.sh with remote hosts `web1`, `web2`, `web3`
+ # runs the recipe install_pkgs in recipe/ubuntu.sh with remote hosts `web1`, `web2`, `web3`
+ # it uses the configuration file from from config/ubuntu.py
+ python smash.py -c ubuntu ubuntu.install_pkgs -H web1 web2 web3
  ```
  
  
